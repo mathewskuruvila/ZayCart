@@ -66,9 +66,7 @@ const orderSchema = new Schema({
     required : true
    },
    orderDate : {
-        type :Date,
-        default : Date(),
-        required : true 
+        type : Date,
    },
    couponCode : {
          type : String

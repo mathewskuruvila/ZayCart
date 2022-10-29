@@ -2,8 +2,10 @@ const express=require('express')
 const services=require('../controller/render')
 
 const router=express.Router();
+router.get('/', services.userHome)
 
-router.get('/user_home', services.isLoggedIn, services.userHome)
+
+router.get('/user_home', services.userHome)
 router.get('/user_logout', services.logout)
 
 
@@ -39,7 +41,7 @@ router.get('/user_cart/delete_cart',services.isLoggedIn,services.deleteCart)
 
 router.get('/productView',services.productView)
 
-router.get('/user-category',services.isLoggedIn,services.userCategory)
+router.get('/user-category',services.userCategory)
 
 router.post('/apply-coupon',services.applyCoupon)
 
@@ -47,7 +49,7 @@ router.get('/user-orders',services.isLoggedIn,services.userOrders)
 router.get('/user-viewItems',services.isLoggedIn,services.userViewItems)
 router.get('/user-cancel-order',services.userOrderCancel)
 
-router.get('/user_shop',services.isLoggedIn,services.userShop)
+router.get('/user_shop',services.userShop)
 router.get('/user_profile',services.isLoggedIn,services.userProfile)
 router.get('/user-wishlist-page',services.isLoggedIn,services.userWishlist)
 router.get('/user-wishlist',services.isLoggedIn,services.addToWishlist)

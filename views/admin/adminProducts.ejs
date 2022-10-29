@@ -45,7 +45,7 @@
       <a href="/admin_panel/edit-product?id=<%= result[i]._id  %> ">
         <i class="fa fa-edit" aria-hidden="true" style="font-size:24px" data-bs-toggle="modal" data-bs-target="#staticBackdrop"></i>
       </a><br>
-      <a href="/admin_panel/delete-product?id=<%= result[i]._id  %> ">
+      <a onclick="return confirm('Are you sure to delete this product?')" href="/admin_panel/delete-product?id=<%= result[i]._id  %> ">
         <i class="fa fa-trash" aria-hidden="true" style="font-size:24px" data-bs-toggle="modal" data-bs-target="#staticBackdrop"></i>
       </a>
     </td>

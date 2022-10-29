@@ -1355,10 +1355,10 @@ exports.userPayment = (req,res) => {
                 couponValue : coupon.couponValue || '',
                 orderBill : orderBill || cart.bill,
                 paymentMethod : paymentMethod,
-                orderDate : new Date()
-
+                orderDate : new Date().toLocaleString('en-us',{ hour12: false })
             }
             req.session.order = newOrder;
+            // console.log(req.session.order)
     }
 
 
@@ -1653,6 +1653,7 @@ exports.test = (req, res) => {
 
     Order.find({ "items.orderStatus" : "Delivered" })
         .then((orders) => {
+            console.log('xxx',orders);
             monthNum.forEach((month, monthIndex) => {
                 orders.forEach((order, index) => {
                     if(order.orderDate.getMonth()+1 == monthIndex+1 ) {
@@ -1660,7 +1661,7 @@ exports.test = (req, res) => {
                     }
                 })
             })//author: Aswanth
- 
+            
             orders.forEach((order) => {
                 if(order.orderDate.getMonth()+1 <= 3){
                     quarters[0].push(order)
@@ -1695,6 +1696,10 @@ exports.test = (req, res) => {
                 acc += curr.orderBill
                 return acc;
             }, 0)
+
+            console.log('monthlySalesTurnover:', monthlySalesTurnover);
+            console.log('quarterlySalesTurnover:',quarterlySalesTurnover);
+            console.log('annualSales:',annualSales);
 
             res.json({ salesOfTheYear : monthlySalesTurnover, quarterlySales : quarterlySalesTurnover, annualSales : annualSales })
         })
